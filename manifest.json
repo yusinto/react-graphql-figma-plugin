@@ -1,0 +1,7 @@
+{
+  "name": "react-figma-plugin",
+  "id": "738168449509241862",
+  "api": "1.0.0",
+  "main": "dist/sandbox.js",
+  "ui": "dist/index.html"
+}
