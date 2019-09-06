@@ -16,7 +16,7 @@ export default () => {
 
   return artists.map(({ id, name, albums }: Artist) => (
     <div key={id}>
-      <h1>{name} albums</h1>
+      <h1>Artist: {name}</h1>
       <ul>
         {albums.map(a => (
           <li key={a.id}>{a.name}</li>
