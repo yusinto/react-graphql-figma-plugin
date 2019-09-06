@@ -1,33 +1,9 @@
 import React from 'react'
 import { useQuery } from 'urql'
+import { Artist, query } from './constants'
 
-interface Album {
-  id: string
-  name: string
-  image: string
-}
-
-interface Artist {
-  id: string
-  name: string
-  albums: Album[]
-}
-
-const App = () => {
-  const [result] = useQuery({
-    query: `
-{
-  queryArtists(byName: "yowis ben") {
-    id
-    name
-    albums {
-      id
-      image
-      name
-    }
-  }
-}`,
-  })
+export default () => {
+  const [result] = useQuery({ query })
   const { fetching, data, error } = result
 
   if (fetching) {
@@ -37,15 +13,15 @@ const App = () => {
   }
 
   const { queryArtists: artists } = data
-  console.log(`Artist count: ${artists.length}`)
-  // parent.postMessage({ pluginMessage: { type: 'projects', data } }, '*')
 
   return artists.map(({ id, name, albums }: Artist) => (
     <div key={id}>
       <h1>{name} albums</h1>
-      <ul>{albums.map(a => <li key={a.id}>{a.name}</li>)}</ul>
+      <ul>
+        {albums.map(a => (
+          <li key={a.id}>{a.name}</li>
+        ))}
+      </ul>
     </div>
   ))
 }
-
-export default App

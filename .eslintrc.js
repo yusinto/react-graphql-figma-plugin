@@ -14,6 +14,11 @@ module.exports = {
     react: {
       version: '16.9',
     },
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
   env: {
     browser: true,
@@ -53,7 +58,7 @@ module.exports = {
       'error',
       {
         groups: ['builtin', 'external', ['internal', 'parent', 'sibling'], 'index'],
-        'newlines-between': 'always',
+        'newlines-between': 'ignore',
       },
     ],
     'jsx-a11y/accessible-emoji': 'error',
